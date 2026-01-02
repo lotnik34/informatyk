@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona Informatyka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+    <div class="app">
+        <aside class="sidebar">
+            <h2 class="logo">INFORMATYK</h2>
+
+            <nav>
+                <button onclick="showPage('home')">Strona główna</button>
+                <button onclick="showPage('contact')">Kontakt</button>
+            </nav>
+
+            <div class="theme">
+                <label>
+                    <input type="checkbox" checked onchange="toggleTheme()">
+                    Tryb ciemny
+                </label>
+            </div>
+        </aside>
+
+        <main class="content">
+            <!-- STRONA GŁÓWNA -->
+            <section id="home" class="page active">
+                <h1>Strona główna</h1>
+
+                <p>
+                    Witaj na mojej stronie!<br>
+                    Jestem informatykiem.
+                </p>
+
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+                     alt="Komputer informatyka"
+                     class="main-image">
+            </section>
+
+            <!-- KONTAKT -->
+            <section id="contact" class="page">
+                <h1>Kontakt</h1>
+
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="Twoje imię" required>
+                    <input type="email" name="email" placeholder="Twój email" required>
+                    <textarea name="message" placeholder="Treść wiadomości" required></textarea>
+
+                    <button type="submit">Wyślij wiadomość</button>
+                    <p id="status"></p>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        Kopiowanie strony zabronione © <span id="year"></span>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

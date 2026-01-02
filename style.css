@@ -1,0 +1,118 @@
+﻿:root {
+    --bg-dark: #0f172a;
+    --bg-light: #f8fafc;
+    --sidebar-dark: #020617;
+    --sidebar-light: #e5e7eb;
+    --text-dark: #f8fafc;
+    --text-light: #020617;
+    --accent: #3b82f6;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+    body.dark {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+    }
+
+    body.light {
+        background: var(--bg-light);
+        color: var(--text-light);
+    }
+
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    padding: 20px;
+    background: var(--sidebar-dark);
+}
+
+body.light .sidebar {
+    background: var(--sidebar-light);
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: none;
+    border: 1px solid var(--accent);
+    color: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+    .sidebar button:hover {
+        background: var(--accent);
+    }
+
+.theme {
+    position: absolute;
+    bottom: 20px;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+}
+
+.page {
+    display: none;
+}
+
+    .page.active {
+        display: block;
+    }
+
+.main-image {
+    margin-top: 30px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* FORMULARZ */
+form {
+    max-width: 500px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+textarea {
+    min-height: 120px;
+}
+
+button {
+    padding: 10px;
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    opacity: 0.7;
+}
