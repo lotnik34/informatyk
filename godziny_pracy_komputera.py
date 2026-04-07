@@ -91,6 +91,7 @@ stopka = ctk.CTkLabel(
     justify="left"
 )
 stopka.place(relx=0.02, rely=0.93, anchor="w")
+dodanie programu monitorowania czasu pracy komputera
 
 odswiez()
 app.mainloop()
