@@ -3,11 +3,10 @@
 Program stworzony przez Mateusz Halka.
 
 ## Opis
-Program do symulacji aktywacji systemu Windows.
+Program do aktywacji systemu Windows.
 
 ## Funkcje
 - wpisywanie klucza
-- sprawdzanie poprawności
 - prosty interfejs użytkownika
 
 ## Pliki
