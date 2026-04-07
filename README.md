@@ -17,7 +17,6 @@ Program do aktywacji systemu Windows.
 
 ## Jak uruchomić
 1. Pobierz pliki
-2. Otwórz index.html w przeglądarce
 
 ## Autor
 Mateusz Halka
