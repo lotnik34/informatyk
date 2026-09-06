@@ -12,8 +12,7 @@ Program do aktywacji systemu Windows.
 ## Pliki
 - aktywacja_windows.py - program w Pythonie
 - index.html - strona główna
-- script.js - logika programu
-- style.css - wygląd aplikacji
+
 
 ## Jak uruchomić
 1. Pobierz pliki
