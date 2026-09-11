@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatyk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased relative">
+
+    <nav class="fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-800 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#o-mnie" class="text-xl font-bold text-blue-500 tracking-wide">Informatyk</a>
+            <div class="space-x-8 text-sm font-medium">
+                <a href="#o-mnie" class="hover:text-blue-400 transition-colors">O mnie</a>
+                <a href="#oferty" class="hover:text-blue-400 transition-colors">Oferty</a>
+                <a href="#kontakt" class="hover:text-blue-400 transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="o-mnie" class="min-h-screen flex items-center justify-center pt-24 pb-12 px-6">
+        <div class="max-w-4xl text-center space-y-6">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
+                Witaj na mojej stronie!
+            </h1>
+
+            <div class="flex justify-center my-6">
+                <img 
+                    src="/static/komputer.png" 
+                    alt="Komputer" 
+                    class="w-[32rem] sm:w-[40rem] md:w-[48rem] max-w-full h-auto rounded-2xl object-cover"
+                >
+            </div>
+
+            <p class="text-slate-200 text-2xl font-semibold">
+                Prywatne usługi IT
+            </p>
+
+            <p class="text-slate-400 text-lg sm:text-xl font-normal max-w-2xl mx-auto leading-relaxed">
+                Szybka naprawa komputerów, optymalizacja systemów oraz dedykowane aplikacje Windows i Android.
+            </p>
+
+            <div class="pt-4">
+                <a href="#kontakt" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl shadow-lg shadow-blue-500/20 transition-all">
+                    Napisz do mnie
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="oferty" class="py-24 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">Zakres Oferty</h2>
+                <p class="text-slate-400 mt-2">Dowiedz się, w jakich obszarach mogę Ci pomóc</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {% for offer in offers %}
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500/50 transition-all group">
+                    <div class="w-16 h-12 bg-slate-900/60 p-2 rounded-xl flex items-center justify-center gap-2 mb-6 border border-slate-700/50 group-hover:border-blue-500/30 transition-colors">
+                        {% if offer.icon == 'code' %}
+                        <!-- Realne logo Python -->
+                        <svg class="w-7 h-7 shrink-0" viewBox="0 0 128 128">
+                            <path fill="#3776AB" d="M63.3 3.03c-28.5 0-26.7 12.36-26.7 12.36l.03 12.8h27.3v3.86H25.32S8 30.12 8 58.82c0 28.7 15.08 27.68 15.08 27.68h9.02v-12.7s-.49-15.08 14.84-15.08h25.68s14.35.24 14.35-13.86V16.89S108.9 3.03 63.3 3.03zm-14.8 9.38a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8z"/>
+                            <path fill="#FFD43B" d="M64.7 124.97c28.5 0 26.7-12.36 26.7-12.36l-.03-12.8H64.07v-3.86h38.62s17.32 1.93 17.32-26.77c0-28.7-15.08-27.68-15.08-27.68h-9.02v12.7s.49 15.08-14.84 15.08H55.39s-14.35-.24-14.35 13.86v28.03s-2.03 13.86 43.66 13.86zm14.8-9.38a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0 8.8z"/>
+                        </svg>
+                        <!-- Realne logo Android -->
+                        <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="#3DDC84">
+                            <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997 0-.5511.4482-.9993.9993-.9993.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997 0-.5511.4482-.9993.9993-.9993.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592c.1251-.2167.0508-.4928-.1659-.6179-.2167-.1251-.4928-.0508-.6179.1659l-2.0227 3.5033C15.3802 8.1287 13.7385 7.7 12 7.7c-1.7385 0-3.3802.4287-5.0744 1.2135L4.9029 5.4103c-.1251-.2167-.4012-.291-.6179-.1659-.2167.1251-.291.4012-.1659.6179l1.9973 3.4592C2.6847 11.2332.321 14.7335.0342 18.818h23.9316c-.2868-4.0845-2.6505-7.5848-6.0843-9.4966"/>
+                        </svg>
+                        {% else %}
+                        <!-- Monitor Komputera -->
+                        <svg class="w-7 h-7 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="12" y1="17" x2="12" y2="21" stroke-width="2"/>
+                        </svg>
+                        <!-- Realny Klucz Warsztatowy -->
+                        <svg class="w-6 h-6 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                        {% endif %}
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">
+                        {% if offer.title == 'Tworzenie Aplikacji Python i Android Studio' %}
+                            Tworzenie Aplikacji Windows i Android
+                        {% else %}
+                            {{ offer.title }}
+                        {% endif %}
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">{{ offer.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white">Kontakt</h2>
+                <p class="text-slate-400 mt-2">Napisz wiadomość poprzez poniższy formularz.</p>
+            </div>
+
+            {% if message_sent %}
+            <div class="bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 p-6 rounded-2xl text-center mb-8 shadow-lg flex items-center justify-center space-x-3">
+                <svg class="w-7 h-7 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div class="text-base sm:text-lg">
+                    Dziękuję, <strong class="text-white">{{ sender_name }}</strong>! Twój e-mail wraz z załącznikami został pomyślnie wysłany.
+                </div>
+            </div>
+            {% endif %}
+
+            {% if error == 'captcha' %}
+            <div class="bg-rose-500/15 border border-rose-500/30 text-rose-300 p-6 rounded-2xl text-center mb-8 shadow-lg flex items-center justify-center space-x-3">
+                <svg class="w-7 h-7 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <div class="text-base sm:text-lg">
+                    Błędny wynik weryfikacji CAPTCHA. Spróbuj ponownie.
+                </div>
+            </div>
+            {% endif %}
+
+            <form action="/kontakt" method="POST" enctype="multipart/form-data" class="space-y-6 bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Imię i nazwisko</label>
+                    <input type="text" name="name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Jan Kowalski">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Adres e-mail</label>
+                    <input type="email" name="email" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="jan@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Wiadomość</label>
+                    <textarea name="message" rows="4" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Wpisz treść wiadomości..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Załączniki (zdjęcia, wideo lub dokumenty - opcjonalnie)</label>
+                    <input type="file" name="attachment" multiple class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white file:font-medium hover:file:bg-blue-500 transition-colors cursor-pointer">
+                </div>
+
+                <!-- POLE CAPTCHA (WERYFIKACJA MATEMATYCZNA) -->
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/80">
+                    <label class="block text-sm font-medium text-slate-300 mb-2">
+                        🛡️ Weryfikacja anty-spamowa: Ile to jest 
+                        <span class="text-blue-400 font-bold text-base">{{ captcha_num1 }} + {{ captcha_num2 }}</span>?
+                    </label>
+                    <input type="hidden" name="captcha_expected" value="{{ captcha_expected }}">
+                    <input type="number" name="captcha_answer" required class="w-full sm:w-32 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Wynik">
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-xl transition-colors cursor-pointer">
+                    Wyślij wiadomość
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+        &copy; 2026. Wszystkie prawa zastrzeżone.
+    </footer>
+
+    <!-- PASEK INFORMACYJNY COOKIES / RODO (JEDNORAZOWY Z MEMORY LOCALSTORAGE) -->
+    <div id="cookie-banner" class="hidden fixed bottom-0 left-0 w-full bg-slate-950/95 border-t border-slate-800 text-slate-300 p-4 z-50 backdrop-blur-md shadow-2xl">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+            <p class="leading-relaxed text-slate-400 text-center sm:text-left">
+                🍪 <strong>Pliki cookies i RODO:</strong> Strona <a href="https://naprawa-komputerow.loca.lt" class="text-blue-400 underline hover:text-blue-300">https://naprawa-komputerow.loca.lt</a> używa plików cookies w celu prawidłowego działania oraz w celach statystycznych. Korzystając ze strony, wyrażasz zgodę na ich używanie zgodnie z aktualnymi ustawieniami przeglądarki.
+            </p>
+            <button onclick="acceptCookies();" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-2 rounded-xl transition-colors shrink-0 shadow-lg shadow-blue-500/10 cursor-pointer">
+                Akceptuję
+            </button>
+        </div>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').classList.remove('hidden');
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
