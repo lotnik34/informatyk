@@ -12,7 +12,6 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-# Wczytanie zmiennych z pliku .env (przydatne przy uruchamianiu lokalnym)
 load_dotenv()
 
 app = FastAPI()
@@ -20,7 +19,6 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Pobieranie zmiennych środowiskowych z Rendera / .env
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 SENDER_EMAIL = os.getenv("SENDER_EMAIL", "informatyk2488@gmail.com")
 RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "informatyk2488@gmail.com")
@@ -45,14 +43,9 @@ def send_email_in_background(
     message_text: str, 
     file_data_list: list = None
 ):
-    """
-    Funkcja wysyła e-mail przy użyciu protokołu HTTP (SendGrid API),
-    omijając blokady tradycyjnego portu SMTP na darmowym planie Render.
-    """
     try:
         url = "https://api.sendgrid.com/v3/mail/send"
         
-        # Przygotowanie załączników (jeśli zostały dodane w formularzu)
         attachments = []
         if file_data_list:
             for fname, fbytes in file_data_list:
@@ -64,7 +57,6 @@ def send_email_in_background(
                     "disposition": "attachment"
                 })
 
-        # Treść HTML wiadomości
         html_content = f"""
         <html>
           <body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
@@ -80,7 +72,6 @@ def send_email_in_background(
         </html>
         """
 
-        # Konstrukcja obiektu JSON dla SendGrid
         payload = {
             "personalizations": [
                 {
@@ -101,7 +92,6 @@ def send_email_in_background(
         if attachments:
             payload["attachments"] = attachments
 
-        # Wysyłka zapytania POST przez natywny urllib
         data = json.dumps(payload).encode('utf-8')
         req = urllib.request.Request(url, data=data, method='POST')
         req.add_header('Authorization', f'Bearer {SENDGRID_API_KEY}')
@@ -152,14 +142,12 @@ async def contact(
     captcha_expected: str = Form(...),
     attachment: List[UploadFile] = File(None),
 ):
-    # Weryfikacja działania CAPTCHA
     if captcha_answer.strip() != captcha_expected.strip():
         return RedirectResponse(
             url=f"/?error=captcha#kontakt", 
             status_code=303
         )
 
-    # Odczyt danych z załączonych plików
     file_data_list = []
     if attachment:
         for file in attachment:
@@ -167,7 +155,6 @@ async def contact(
                 content = await file.read()
                 file_data_list.append((file.filename, content))
 
-    # Wysłanie wiadomości w tle
     background_tasks.add_task(
         send_email_in_background, 
         name, 
