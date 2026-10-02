@@ -30,8 +30,8 @@ OFFERS = [
         "icon": "code",
     },
     {
-        "title": "Serwis i Wsparcie IT",
-        "description": "Diagnostyka sprzętowa, usuwanie usterek, optymalizacja systemów i doradztwo technologiczne.",
+        "title": "Serwis komputerowy i Diagnostyka Komputerowa Pojazdów",
+        "description": "Diagnostyka komputerowa samochodów (odczyt i kasowanie błędów, parametry na żywo), serwis sprzętu komputerowego oraz optymalizacja systemów.",
         "icon": "wrench",
     },
 ]
